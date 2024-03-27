@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>in.co.gorest</groupId>
+  <artifactId>gorest-api</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>gorest-api</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <rest-assured-version>5.4.0</rest-assured-version>
+    <testng-version>7.9.0</testng-version>
+    <compiler-plugin-version>3.13.0</compiler-plugin-version>
+    <maven-compiler-source>11</maven-compiler-source>
+    <maven-compiler-target>11</maven-compiler-target>
+    <maven-surefire-plugin-version>3.2.5</maven-surefire-plugin-version>
+    <slf4j-version>2.0.12</slf4j-version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <suite>suite-name</suite>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>${rest-assured-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>${rest-assured-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng-version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4j-version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${compiler-plugin-version}</version>
+          <configuration>
+            <source>${maven-compiler-source}</source>
+            <target>${maven-compiler-target}</target>
+            <encoding>${project.build.sourceEncoding}</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${maven-surefire-plugin-version}</version>
+          <configuration>
+            <suiteXmlFiles>
+              <suiteXmlFile>${project.build.directory}/test-classes/${suite}.xml
+              </suiteXmlFile>
+            </suiteXmlFiles>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
