@@ -12,6 +12,8 @@
 
   <properties>
     <rest-assured-version>5.4.0</rest-assured-version>
+    <jackson-databind-version>2.17.0</jackson-databind-version>
+    <selenium-java-version>4.18.1</selenium-java-version>
     <testng-version>7.9.0</testng-version>
     <compiler-plugin-version>3.13.0</compiler-plugin-version>
     <maven-compiler-source>11</maven-compiler-source>
@@ -19,7 +21,7 @@
     <maven-surefire-plugin-version>3.2.5</maven-surefire-plugin-version>
     <slf4j-version>2.0.12</slf4j-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <suite>suite-name</suite>
+    <suite>suite</suite>
   </properties>
 
   <dependencies>
@@ -34,10 +36,35 @@
       <version>${rest-assured-version}</version>
     </dependency>
     <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson-databind-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson-databind-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${jackson-databind-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium-java-version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>${testng-version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j-version}</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -65,7 +92,7 @@
           <version>${maven-surefire-plugin-version}</version>
           <configuration>
             <suiteXmlFiles>
-              <suiteXmlFile>${project.build.directory}/test-classes/${suite}.xml
+              <suiteXmlFile>${project.build.directory}/test-classes/apisuites/${suite}.xml
               </suiteXmlFile>
             </suiteXmlFiles>
           </configuration>
