@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="User API Test">
+
+    <test name="[ Users ] Check request methods">
+        <classes>
+            <class name="in.co.gorest.api.user.rest.UserTest">
+                <methods>
+                    <include name="verifyGetUserInfoByIdTest" />
+                    <include name="verifyPostUserInfoTest" />
+                    <include name="verifyPostUserWithMissingFieldTest" />
+                    <include name="verifyDeleteUserInfoTest"/>
+                    <include name="verifyPutUserInfoTest" />
+                    <include name="verifyPatchUserInfoTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
