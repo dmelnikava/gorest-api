@@ -44,12 +44,12 @@ public class UserFactory {
     }
 
     public static User generateGender(User user) {
-        user.setGender(Genders.getTypes().get(new SecureRandom().nextInt(2)));
+        user.setGender(Gender.getTypes().get(new SecureRandom().nextInt(2)));
         return user;
     }
 
     public static User generateStatus(User user) {
-        user.setStatus(Statuses.getTypes().get(new SecureRandom().nextInt(2)));
+        user.setStatus(Status.getTypes().get(new SecureRandom().nextInt(2)));
         return user;
     }
 }

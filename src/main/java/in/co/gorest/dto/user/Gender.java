@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public enum Statuses {
+public enum Gender {
 
-    ACTIVE("active"),
-    INACTIVE("inactive");
+    FEMALE("female"),
+    MALE("male");
 
     private final String type;
 
-    Statuses(final String type) {
+    Gender(final String type) {
         this.type = type;
     }
 
@@ -21,7 +21,7 @@ public enum Statuses {
 
     public static List<String> getTypes() {
         List<String> types = new ArrayList<>();
-        Arrays.stream(Statuses.values()).forEach(status -> types.add(status.getType()));
+        Arrays.stream(Gender.values()).forEach(gender -> types.add(gender.getType()));
         return types;
     }
 }

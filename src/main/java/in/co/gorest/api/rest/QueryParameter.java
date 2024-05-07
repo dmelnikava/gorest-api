@@ -33,21 +33,4 @@ public class QueryParameter {
     public String getOptionName() {
         return option.getName();
     }
-
-    public enum QueryOption {
-
-        ID("id"),
-        PAGE("page"),
-        PER_PAGE("per_page");
-
-        private final String name;
-
-        QueryOption(final String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
 }

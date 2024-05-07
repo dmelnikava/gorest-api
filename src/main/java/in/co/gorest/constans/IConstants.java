@@ -5,7 +5,6 @@ import in.co.gorest.utils.ConfigUtil;
 public interface IConstants {
 
     String URL = ConfigUtil.getConfigValue("DEMO.url");
-    String SELENIUM_URL = ConfigUtil.getConfigValue("selenium_url");
 
     String BEARER_TOKEN = ConfigUtil.getConfigValue("bearer_token");
 

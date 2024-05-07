@@ -43,26 +43,26 @@ public class Specification implements IConstants {
                 .setContentType(ContentType.JSON);
     }
 
-    public static ResponseSpecification responseSpecification(StatusCodes statusCode) {
+    public static ResponseSpecification responseSpecification(StatusCode statusCode) {
         return new ResponseSpecBuilder()
                 .expectStatusCode(statusCode.getValue())
                 .build();
     }
 
-    public static void setOption(String url, Object body, StatusCodes statusCode) {
+    public static void setOption(String url, Object body, StatusCode statusCode) {
         RestAssured.reset();
         String bodyAsString = getBodyAsString(body);
         RestAssured.requestSpecification = requestSpecification(url, bodyAsString);
         RestAssured.responseSpecification = responseSpecification(statusCode);
     }
 
-    public static void setOption(String url, Map<String, Integer> queryParameters, StatusCodes statusCode) {
+    public static void setOption(String url, Map<String, Integer> queryParameters, StatusCode statusCode) {
         RestAssured.reset();
         RestAssured.requestSpecification = requestSpecification(url, queryParameters);
         RestAssured.responseSpecification = responseSpecification(statusCode);
     }
 
-    public static void setOption(String url, StatusCodes statusCode) {
+    public static void setOption(String url, StatusCode statusCode) {
         RestAssured.reset();
         RestAssured.requestSpecification = requestSpecification(url);
         RestAssured.responseSpecification = responseSpecification(statusCode);

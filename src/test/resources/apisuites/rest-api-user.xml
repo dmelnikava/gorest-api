@@ -4,8 +4,6 @@
 <suite name="User API Test">
 
     <test name="[ Users ] Check request methods">
-        <parameter name="browserName" value="chrome"/>
-        <parameter name="startEndpoint" value="users"/>
         <classes>
             <class name="in.co.gorest.api.user.rest.UserTest">
                 <methods>

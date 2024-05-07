@@ -4,8 +4,6 @@
 <suite name="Post API Test">
 
     <test name="[ Posts ] Check request methods">
-        <parameter name="browserName" value="chrome"/>
-        <parameter name="startEndpoint" value="users"/>
         <classes>
             <class name="in.co.gorest.api.post.rest.PostTest">
                 <methods>

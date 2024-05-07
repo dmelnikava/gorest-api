@@ -1,6 +1,6 @@
 package in.co.gorest.api.rest;
 
-public enum RequestTypes {
+public enum RequestType {
 
     GET("GET"),
     POST("POST"),
@@ -10,7 +10,7 @@ public enum RequestTypes {
 
     private final String name;
 
-    RequestTypes(final String name) {
+    RequestType(final String name) {
         this.name = name;
     }
 

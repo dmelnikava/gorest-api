@@ -3,24 +3,11 @@
 
 <suite name="Comment API Test">
 
-    <test name="[ Comments ] Check POST request method">
-        <parameter name="browserName" value="chrome"/>
-        <parameter name="startEndpoint" value="users"/>
+    <test name="[ Comments ] Check request methods">
         <classes>
             <class name="in.co.gorest.api.comment.rest.CommentTest">
                 <methods>
                     <include name="verifyPostCommentInfoTest"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-
-    <test name="[ Comments ] Check DELETE request method">
-        <parameter name="browserName" value="chrome"/>
-        <parameter name="startEndpoint" value="comments"/>
-        <classes>
-            <class name="in.co.gorest.api.comment.rest.CommentTest">
-                <methods>
                     <include name="verifyDeleteCommentInfoTest"/>
                 </methods>
             </class>

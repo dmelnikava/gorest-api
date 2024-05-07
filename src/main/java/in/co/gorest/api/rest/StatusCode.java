@@ -1,6 +1,6 @@
 package in.co.gorest.api.rest;
 
-public enum StatusCodes {
+public enum StatusCode {
 
     OK(200),
     CREATED(201),
@@ -10,7 +10,7 @@ public enum StatusCodes {
 
     private final int value;
 
-    StatusCodes(final int value) {
+    StatusCode(final int value) {
         this.value = value;
     }
 
