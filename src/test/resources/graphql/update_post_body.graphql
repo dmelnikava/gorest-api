@@ -1,0 +1,16 @@
+mutation UpdatePost($id: Int! $body: String!) {
+    updatePost(
+        input: {
+            id: $id,
+            body: $body
+        }
+    ) {
+        clientMutationId
+        post {
+            id
+            title
+            body
+            userId
+        }
+    }
+}

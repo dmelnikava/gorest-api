@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "createUser": {
+          "type": "object",
+          "properties": {
+            "clientMutationId": {
+              "type": "null"
+            },
+            "user": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "gender": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "email",
+                "gender",
+                "status"
+              ]
+            }
+          },
+          "required": [
+            "clientMutationId",
+            "user"
+          ]
+        }
+      },
+      "required": [
+        "createUser"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

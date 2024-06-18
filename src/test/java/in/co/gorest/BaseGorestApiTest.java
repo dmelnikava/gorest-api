@@ -4,36 +4,15 @@ import in.co.gorest.api.rest.EndpointType;
 import in.co.gorest.api.rest.RequestType;
 import in.co.gorest.api.rest.Specification;
 import in.co.gorest.api.rest.StatusCode;
-import in.co.gorest.constans.IConstants;
 import in.co.gorest.dto.comment.Comment;
 import in.co.gorest.dto.comment.CommentFactory;
 import in.co.gorest.dto.post.Post;
 import in.co.gorest.dto.post.PostFactory;
 import in.co.gorest.dto.user.User;
 import in.co.gorest.dto.user.UserFactory;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
 import org.apache.commons.lang3.tuple.Pair;
 
-import static io.restassured.RestAssured.given;
-
-public class BaseGorestApiTest implements IConstants {
-
-    public Response makeRequest(Pair<RequestType, String> endpoint) {
-        return given()
-                .when()
-                .request(endpoint.getKey().getName(), endpoint.getValue())
-                .then()
-                .log().all()
-                .extract()
-                .response();
-    }
-
-    public JsonPath getResponseAsJsonPath(Response response) {
-        return response
-                .body()
-                .jsonPath();
-    }
+public class BaseGorestApiTest extends AbstractGorestTest {
 
     public User postNewUser() {
         User expectedUser = UserFactory.generateUser();

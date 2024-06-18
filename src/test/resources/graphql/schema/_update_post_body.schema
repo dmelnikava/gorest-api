@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "updatePost": {
+          "type": "object",
+          "properties": {
+            "clientMutationId": {
+              "type": "null"
+            },
+            "post": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "body": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "userId": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "body",
+                "title",
+                "userId"
+              ]
+            }
+          },
+          "required": [
+            "clientMutationId",
+            "post"
+          ]
+        }
+      },
+      "required": [
+        "updatePost"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

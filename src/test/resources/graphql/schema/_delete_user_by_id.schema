@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "deleteUser": {
+          "type": "object",
+          "properties": {
+            "clientMutationId": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "clientMutationId"
+          ]
+        }
+      },
+      "required": [
+        "deleteUser"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

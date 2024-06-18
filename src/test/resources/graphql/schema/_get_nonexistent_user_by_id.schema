@@ -1,0 +1,94 @@
+{
+  "type": "object",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "line": {
+                  "type": "integer"
+                },
+                "column": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "line",
+                "column"
+              ]
+            }
+          },
+          "path": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "extensions": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "result": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "fieldName": {
+                      "type": "string"
+                    },
+                    "messages": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "fieldName",
+                    "messages"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "code",
+              "result"
+            ]
+          }
+        },
+        "required": [
+          "message",
+          "locations",
+          "path",
+          "extensions"
+        ]
+      }
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "user"
+      ]
+    }
+  },
+  "required": [
+    "errors",
+    "data"
+  ]
+}

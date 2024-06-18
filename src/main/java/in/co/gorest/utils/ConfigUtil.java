@@ -14,9 +14,9 @@ public class ConfigUtil implements IConstants {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     public static String getConfigValue(String value) {
-        try {
+        try (FileInputStream fileInputStream = new FileInputStream(CONFIG_FILE_PATH)) {
             Properties properties = new Properties();
-            properties.load(new FileInputStream(CONFIG_FILE_PATH));
+            properties.load(fileInputStream);
             return properties.getProperty(value);
         } catch (IOException e) {
             LOGGER.error("Unable to read the file!");
