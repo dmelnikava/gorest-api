@@ -1,5 +1,6 @@
 package in.co.gorest.api.graphql;
 
+import in.co.gorest.utils.GraphqlUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +15,7 @@ public class QueryBuilder {
     public static String getGraphqlPayload(String filePath, Object variables) {
         File file = new File(filePath);
         try {
-            return GraphqlTemplate.parseGraphql(file, variables);
+            return GraphqlUtil.parseGraphql(file, variables);
         } catch (IOException e) {
             LOGGER.error("Unable parse object to string!");
             return "";

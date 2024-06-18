@@ -1,6 +1,6 @@
 package in.co.gorest.api.post.graphql;
 
-import in.co.gorest.BaseGorestApiTest;
+import in.co.gorest.BaseGorestGraphqlApiTest;
 import in.co.gorest.api.graphql.QueryBuilder;
 import in.co.gorest.api.rest.Specification;
 import in.co.gorest.api.rest.StatusCode;
@@ -18,16 +18,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class PostTest extends BaseGorestApiTest {
+public class PostTest extends BaseGorestGraphqlApiTest {
 
     @Test(description = "Verify update post's body request")
     @CustomAttribute(name = "TestCaseKey", values = "ANDK-317")
     public void verifyUpdatePostBodyTest() {
-        Post post = postNewPostViaGraphqlApi();
+        Post post = postNewPost();
         Post newPostBody = PostFactory.generateBody(post);
         String graphqlQuery = QueryBuilder.getGraphqlPayload(UPDATE_POST_BODY_GRAPHQL_QUERY_PATH, newPostBody);
         Specification.setOptionForRequestToGraphqlApi(graphqlQuery, StatusCode.OK);
-        Response responsePostData = makeRequestToGraphqlApi();
+        Response responsePostData = makeRequest();
         Post postFromResponse = getResponseAsJsonPath(responsePostData).getObject("data.updatePost.post", Post.class);
         CustomAssert.assertJsonSchemaIsValid(responsePostData, UPDATE_POST_BODY_GRAPHQL_SCHEMA_PATH);
         Assert.assertEquals(postFromResponse, newPostBody, "Post's data from the response is not equal to data of post that id is used in the request!");
@@ -36,13 +36,13 @@ public class PostTest extends BaseGorestApiTest {
     @Test(description = "Verify get all posts' data by user's id request")
     @CustomAttribute(name = "TestCaseKey", values = "ANDK-318")
     public void verifyGetAllPostsByUserIdTest() {
-        User user = postNewUserViaGraphqlApi();
+        User user = postNewUser();
         List<Post> posts = IntStream.range(1, NumberGenerator.generateInt(2, 10))
-                .mapToObj(i -> postNewPostViaGraphqlApi(user))
+                .mapToObj(i -> postNewPost(user))
                 .collect(Collectors.toList());
         String graphqlQuery = QueryBuilder.getGraphqlPayload(GET_POSTS_BY_USER_ID_GRAPHQL_QUERY_PATH, user);
         Specification.setOptionForRequestToGraphqlApi(graphqlQuery, StatusCode.OK);
-        Response responseData = makeRequestToGraphqlApi();
+        Response responseData = makeRequest();
         List<Post> postsFromResponse = getResponseAsJsonPath(responseData).getList("data.user.posts.nodes", Post.class);
         CustomAssert.assertJsonSchemaIsValid(responseData, GET_POSTS_BY_USER_ID_GRAPHQL_SCHEMA_PATH);
         Assert.assertEquals(postsFromResponse.size(), posts.size(), "Response should contains all user's posts!");

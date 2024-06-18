@@ -1,4 +1,4 @@
-package in.co.gorest.api.graphql;
+package in.co.gorest.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.io.*;
 
-public class GraphqlTemplate {
+public class GraphqlUtil {
 
     public static String parseGraphql(File file, Object variables) throws IOException {
         String graphqlFileContent = convertInputStreamToString(new FileInputStream(file));
