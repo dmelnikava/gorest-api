@@ -1,12 +1,16 @@
 package in.co.gorest.dto.post;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Objects;
 
 public class Post {
 
     @JsonProperty("id")
     public Integer id;
     @JsonProperty("user_id")
+    @JsonAlias("userId")
     public Integer userId;
     @JsonProperty("title")
     public String title;
@@ -54,5 +58,21 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Post post = (Post) o;
+        return Objects.equals(id, post.id)
+                && Objects.equals(userId, post.userId)
+                && Objects.equals(title, post.title)
+                && Objects.equals(body, post.body);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userId, title, body);
     }
 }

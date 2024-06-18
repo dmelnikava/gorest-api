@@ -1,5 +1,6 @@
 package in.co.gorest;
 
+import in.co.gorest.api.graphql.QueryBuilder;
 import in.co.gorest.api.rest.EndpointType;
 import in.co.gorest.api.rest.RequestType;
 import in.co.gorest.api.rest.Specification;
@@ -18,6 +19,10 @@ import org.apache.commons.lang3.tuple.Pair;
 import static io.restassured.RestAssured.given;
 
 public class BaseGorestApiTest implements IConstants {
+
+    public Response makeRequestToGraphqlApi() {
+        return makeRequest(GRAPHQL_ENDPOINT);
+    }
 
     public Response makeRequest(Pair<RequestType, String> endpoint) {
         return given()
@@ -41,6 +46,13 @@ public class BaseGorestApiTest implements IConstants {
         return makeRequest(EndpointType.USERS.postRequest()).as(User.class);
     }
 
+    public User postNewUserViaGraphqlApi() {
+        User user = UserFactory.generateUser();
+        String graphqlQuery = QueryBuilder.getGraphqlPayload(CREATE_USER_GRAPHQL_QUERY_PATH, user);
+        Specification.setOptionForRequestToGraphqlApi(graphqlQuery, StatusCode.OK);
+        return getResponseAsJsonPath(makeRequestToGraphqlApi()).getObject("data.createUser.user", User.class);
+    }
+
     public Post postNewPost() {
         Post post = PostFactory.generatePost(postNewUser());
         Specification.setOption(URL, post, StatusCode.CREATED);
@@ -48,6 +60,18 @@ public class BaseGorestApiTest implements IConstants {
         Pair<RequestType, String> postPostEndpoint = Pair.of(postPostRequest.getKey(),
                 String.format(postPostRequest.getValue(), post.getUserId()));
         return makeRequest(postPostEndpoint).as(Post.class);
+    }
+
+    public Post postNewPostViaGraphqlApi() {
+        User user = postNewUserViaGraphqlApi();
+        return postNewPostViaGraphqlApi(user);
+    }
+
+    public Post postNewPostViaGraphqlApi(User user) {
+        Post post = PostFactory.generatePost(user);
+        String graphqlQuery = QueryBuilder.getGraphqlPayload(CREATE_POST_GRAPHQL_QUERY_PATH, post);
+        Specification.setOptionForRequestToGraphqlApi(graphqlQuery, StatusCode.OK);
+        return getResponseAsJsonPath(makeRequestToGraphqlApi()).getObject("data.createPost.post", Post.class);
     }
 
     public Comment postNewComment() {

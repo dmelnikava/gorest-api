@@ -1,0 +1,17 @@
+mutation CreatePost($title: String! $body: String! $user_id: Int!) {
+    createPost(
+        input: {
+            title: $title,
+            body: $body,
+            userId: $user_id
+        }
+    ) {
+        clientMutationId
+        post {
+            id
+            title
+            body
+            userId
+        }
+    }
+}

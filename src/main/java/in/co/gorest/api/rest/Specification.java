@@ -36,6 +36,13 @@ public class Specification implements IConstants {
                 .build();
     }
 
+    public static RequestSpecification requestSpecification(String url, String body, String contentType) {
+        return getBaseRequestSpec(url)
+                .addHeader("Content-Type", contentType)
+                .setBody(body)
+                .build();
+    }
+
     public static RequestSpecBuilder getBaseRequestSpec(String url) {
         return new RequestSpecBuilder()
                 .addHeader("Authorization", "Bearer " + BEARER_TOKEN)
@@ -65,6 +72,12 @@ public class Specification implements IConstants {
     public static void setOption(String url, StatusCode statusCode) {
         RestAssured.reset();
         RestAssured.requestSpecification = requestSpecification(url);
+        RestAssured.responseSpecification = responseSpecification(statusCode);
+    }
+
+    public static void setOptionForRequestToGraphqlApi(String query, StatusCode statusCode) {
+        RestAssured.reset();
+        RestAssured.requestSpecification = requestSpecification(GRAPHQL_URL, query, JSON_CONTENT_TYPE);
         RestAssured.responseSpecification = responseSpecification(statusCode);
     }
 
