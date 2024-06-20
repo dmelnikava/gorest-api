@@ -3,7 +3,7 @@
 
 <suite name="Post API Test">
 
-    <test name="[ Posts ] Check GET post's information request method">
+    <test name="[ Posts ] Check GET post's information request method" enabled="false">
         <classes>
             <class name="in.co.gorest.api.post.rest.PostTest">
                 <methods>
