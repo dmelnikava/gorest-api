@@ -27,7 +27,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "{bearer_token}"
-          replace: ${{secrets.BEARER_TOKEN}}
+          replace: ${{ secrets.BEARER_TOKEN }}
           regex: false
           include: "src/main/resources/_config.properties"
 
@@ -52,16 +52,3 @@ jobs:
         with:
           name: Go-rest API Report
           path: allure-results
-
-      - name: Save PR number
-        env:
-        PR_NUMBER: ${{ github.event.number }}
-        run: |
-          mkdir -p ./pr
-          echo $PR_NUMBER > ./pr/pr_number
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: pr_number
-          path:
-            pr/
