@@ -3,11 +3,20 @@
 
 <suite name="Post GraphQL API Test">
 
-    <test name="[ Posts ] Check request methods">
+    <test name="[ Posts ] Check update body request method">
         <classes>
             <class name="in.co.gorest.api.post.graphql.PostTest">
                 <methods>
                     <include name="verifyUpdatePostBodyTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="[ Posts ] Check get all posts by user's id request method">
+        <classes>
+            <class name="in.co.gorest.api.post.graphql.PostTest">
+                <methods>
                     <include name="verifyGetAllPostsByUserIdTest"/>
                 </methods>
             </class>

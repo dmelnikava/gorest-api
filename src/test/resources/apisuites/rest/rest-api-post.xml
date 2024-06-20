@@ -3,11 +3,20 @@
 
 <suite name="Post API Test">
 
-    <test name="[ Posts ] Check request methods">
+    <test name="[ Posts ] Check GET post's information request method">
         <classes>
             <class name="in.co.gorest.api.post.rest.PostTest">
                 <methods>
                     <include name="verifyGetPostsInfoUsingQueryParametersTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="[ Posts ] Check POST request method">
+        <classes>
+            <class name="in.co.gorest.api.post.rest.PostTest">
+                <methods>
                     <include name="verifyPostRequestUsingUserIdTest"/>
                 </methods>
             </class>

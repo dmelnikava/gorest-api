@@ -1,0 +1,67 @@
+name: Go-rest API Tests
+
+on:
+  push:
+    branches: [ "github-actions" ]
+  pull_request:
+    branches: [ "github-actions" ]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  Run-API-Tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Add Bearer token
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "{bearer_token}"
+          replace: ${{secrets.BEARER_TOKEN}}
+          regex: false
+          include: "src/main/resources/_config.properties"
+
+      - name: Run REST api user tests
+        run: mvn clean test -Dsuite=rest/rest-api-user
+
+      - name: Run REST api post tests
+        run: mvn clean test -Dsuite=rest/rest-api-post
+
+      - name: Run REST api comment tests
+        run: mvn clean test -Dsuite=rest/rest-api-comment
+
+      - name: Run GraphQL api user tests
+        run: mvn clean test -Dsuite=graphql/graphql-api-user
+
+      - name: Run GraphQL api post tests
+        run: mvn clean test -Dsuite=graphql/graphql-api-post
+
+      - name: Upload Allure test report to GitHub
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Go-rest API Report
+          path: allure-results
+
+      - name: Save PR number
+        env:
+        PR_NUMBER: ${{ github.event.number }}
+        run: |
+          mkdir -p ./pr
+          echo $PR_NUMBER > ./pr/pr_number
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr_number
+          path:
+            pr/

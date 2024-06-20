@@ -3,15 +3,60 @@
 
 <suite name="User API Test">
 
-    <test name="[ Users ] Check request methods">
+    <test name="[ Users ] Check GET user's information request method">
         <classes>
             <class name="in.co.gorest.api.user.rest.UserTest">
                 <methods>
                     <include name="verifyGetUserInfoByIdTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="[ Users ] Check POST user request method">
+        <classes>
+            <class name="in.co.gorest.api.user.rest.UserTest">
+                <methods>
                     <include name="verifyPostUserInfoTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="[ Users ] Check POST user with missing field request method">
+        <classes>
+            <class name="in.co.gorest.api.user.rest.UserTest">
+                <methods>
                     <include name="verifyPostUserWithMissingFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="[ Users ] Check DELETE request method">
+        <classes>
+            <class name="in.co.gorest.api.user.rest.UserTest">
+                <methods>
                     <include name="verifyDeleteUserInfoTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="[ Users ] Check PUT request method">
+        <classes>
+            <class name="in.co.gorest.api.user.rest.UserTest">
+                <methods>
                     <include name="verifyPutUserInfoTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="[ Users ] Check PATCH request method">
+        <classes>
+            <class name="in.co.gorest.api.user.rest.UserTest">
+                <methods>
                     <include name="verifyPatchUserInfoTest" />
                 </methods>
             </class>
