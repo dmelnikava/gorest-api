@@ -2,13 +2,12 @@ name: Go-rest API Tests
 
 on:
   push:
-    branches: [ "github-actions" ]
   pull_request:
-    branches: [ "github-actions" ]
     types: [opened, synchronize, reopened]
 
 jobs:
-  Run-API-Tests:
+  run_if:
+    if: startsWith(github.head_ref, 'github-actions')
 
     runs-on: ubuntu-latest
 
