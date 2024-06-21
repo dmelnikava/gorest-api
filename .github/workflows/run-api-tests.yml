@@ -6,7 +6,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  run_if:
+  Run-API-Tests:
     if: startsWith(github.head_ref, 'github-actions')
 
     runs-on: ubuntu-latest
