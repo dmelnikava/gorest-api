@@ -3,11 +3,20 @@
 
 <suite name="Comment API Test">
 
-    <test name="[ Comments ] Check request methods">
+    <test name="[ Comments ] Check POST request method">
         <classes>
             <class name="in.co.gorest.api.comment.rest.CommentTest">
                 <methods>
                     <include name="verifyPostCommentInfoTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="[ Comments ] Check DELETE request method">
+        <classes>
+            <class name="in.co.gorest.api.comment.rest.CommentTest">
+                <methods>
                     <include name="verifyDeleteCommentInfoTest"/>
                 </methods>
             </class>

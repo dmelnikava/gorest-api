@@ -3,12 +3,30 @@
 
 <suite name="User GraphQL API Test">
 
-    <test name="[ Users ] Check request methods">
+    <test name="[ Users ] Check create request method">
         <classes>
             <class name="in.co.gorest.api.user.graphql.UserTest">
                 <methods>
                     <include name="verifyCreateUserTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="[ Users ] Check get user by id request method">
+        <classes>
+            <class name="in.co.gorest.api.user.graphql.UserTest">
+                <methods>
                     <include name="verifyGetUserByIDTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="[ Users ] Check delete request method">
+        <classes>
+            <class name="in.co.gorest.api.user.graphql.UserTest">
+                <methods>
                     <include name="verifyDeleteUserTest" />
                 </methods>
             </class>
