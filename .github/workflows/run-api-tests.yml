@@ -6,7 +6,7 @@ on:
 
 jobs:
   Run-API-Tests:
-    if: startsWith(github.head_ref, 'github-actions')
+    if: github.head_ref != 'main'
 
     runs-on: ubuntu-latest
 
